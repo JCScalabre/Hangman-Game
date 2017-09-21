@@ -113,8 +113,8 @@ if(chosenWord === targetWord.join("")) {
 // If lives = 0:
 } else if (lives === 0) {
 	console.log("You Lost!");
+	alert("You Lost! The word was '" + chosenWord + "'. Press Space to play again.")
 	reset();
-	alert("You Lost! Press Space to play again.")
 	console.log("Lives: " + lives);
 	losses++;
 	// var youlost = 
