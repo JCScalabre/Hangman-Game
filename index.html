@@ -3,16 +3,25 @@
 <head>
 	<title>League of Hangman</title>
 	<link rel="icon" href="assets/images/page_icon.png">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
 
-	<div id="game">
-		<h1>Press Space To Start!</h1>
-		<h1> Word: </h1> 
-	 	<h1> Wrong Letters: </h1>
-	 	<h1> Lives: </h1>
-	 	<h1> Wins: </h1>
-	 	<h1> Losses: </h1>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<img src="assets/images/blacksquare.jpg" id="box">
+				<h1>Press Space To Start! <h1/>
+		 		<p>Word:</p>
+	 	 		<p>Wrong Letters:</p>
+	 	 		<p>Lives: </p>
+	 	 		<p>Wins:</p>
+	 			<p>Losses: </p>
+	 		</div>
+	 		<div class="col-md-4"></div>
+	 	</div>
   	</div>
 
 <script type="text/javascript">
@@ -22,6 +31,7 @@ var list = "aatrox ahri akali alistar amumu anivia annie ashe azir blitzcrank br
 var res = list.split(" ");
 var possibleWords = res;
 
+// The reset function that we will use after the game is won / lost.
 function reset(){
 	lives = 10;
 	targetWord = [];
@@ -32,6 +42,7 @@ function reset(){
 	}
 }
 
+// Setting all the variables for the game:
 var lives = 10;
 var wins = 0;
 var losses = 0;
@@ -97,7 +108,21 @@ var html =
 	 "<h1> Wins: " + wins + "</h1>" +
 	 "<h1> Losses: " + losses + "</h1>"
 
-    document.querySelector("#game").innerHTML = html;
+	 // "<div class="row">" + 
+		// 	"<div class="col-md-4"></div>" + 
+		// 	"<div class="col-md-4">" + 
+		// 		"<img src="assets/images/blacksquare.jpg" id="box">" + 
+		// 		"<h1>Press Space To Start! <h1/>" + 
+		//  		"<p>Word: " + targetWord + "</p>" + 
+	 // 	 		"<p>Wrong Letters: " + failedGuesses + "</p>" + 
+	 // 	 		"<p>Lives: " + lives + "</p>" + 
+	 // 	 		"<p>Wins: " + wins + "</p>" + 
+	 // 			"<p>Losses: " + losses + "</p>" + 
+	 // 		"</div>" + 
+	 // 		"<div class="col-md-4"></div>" + 
+	 // 	"</div>"
+
+    document.querySelector(".container").innerHTML = html;
 
 // If target word becomes chosen word (AKA you won):
 if(chosenWord === targetWord.join("")) {
@@ -109,7 +134,7 @@ if(chosenWord === targetWord.join("")) {
 	console.log("Chosen word: " + chosenWord);
 	var youwon =
 	"<h1> You won! Press space to play again! </h1>"
-	document.querySelector("#game").innerHTML = youwon;
+	document.querySelector(".container").innerHTML = youwon;
 
 // If lives = 0:
 } else if (lives === 0) {
@@ -119,7 +144,7 @@ if(chosenWord === targetWord.join("")) {
 	losses++;
 	var youlost =
 	"<h1> You lost! Press space to play again! </h1>"
-	document.querySelector("#game").innerHTML = youlost;
+	document.querySelector(".container").innerHTML = youlost;
 }
 
 }
